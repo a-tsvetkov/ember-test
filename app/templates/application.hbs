@@ -1,0 +1,39 @@
+<div id="wrap" class="container">
+
+    <div class="row">
+
+        <div id="menu" class="col-sm-2">
+            <nav class="nav-sidebar">
+                <ul class="nav" data-bind="foreach: menuItems">
+                    {{#each item in menuItems}}
+                    <li>
+                        {{#link-to item.route class='inner'}}
+                            {{item.name}}
+                        {{/link-to}}
+                    </li>
+                    {{/each}}
+                </ul>
+            </nav>
+        </div>
+
+        <div id="content" class="col-md-10">
+            {{outlet}}
+        </div>
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+<hr>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>
+                    Copyright &copy; Alex Tsvetkov 2013
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

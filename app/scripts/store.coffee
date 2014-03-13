@@ -1,0 +1,1 @@
+VacancySearch.ApplicationAdapter = DS.FixtureAdapter

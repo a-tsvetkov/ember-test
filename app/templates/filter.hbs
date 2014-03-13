@@ -1,0 +1,14 @@
+<div class="content-wrap">
+    <ul class="nav nav-tabs nav-justified">
+        {{#link-to 'filter.index' tagName='li' href=false}}
+            <a {{bindAttr href="view.href"}}>Простой поиск</a>
+        {{/link-to}}
+        {{#link-to 'filter.extended' tagName='li' href=false}}
+            <a {{bindAttr href="view.href"}}>Разширенный поиск</a>
+        {{/link-to}}
+    </ul>
+
+    <div class="tab-content">
+        {{outlet}}
+    </div>
+</div>
