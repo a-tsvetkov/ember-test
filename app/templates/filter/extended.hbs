@@ -1,182 +1,137 @@
-<form role="form" >
-    <div class="form-field">
-        <div class="form-label">
-            Я хочу получать вакансии для позиции:
+<div class="form-field">
+    <div class="form-label">
+        Я хочу получать вакансии для позиции:
+    </div>
+    <div class="form-input">
+        {{input type="text" value=filter.text class="form-control" id="form__text" }}
+        <p class="help-block search-help">Например, <a href="#">бухгалтер</a></p>
+    </div>
+</div>
+
+<div class="form-field">
+    <div class="form-label">
+        Профессиональная область:
+    </div>
+    <div class="form-input">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                Все профессиональные области
+            </label>
         </div>
-        <div class="form-input">
-            <input type="text" class="form-control" id="form__text">
-            <p class="help-block search-help">Например, <a href="#">бухгалтер</a></p>
+        <hr>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                Бухгалтерия, управленческий учет, финансы предприятия
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                Информационные технологии, интернет, телеком
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                Маркетинг, реклама, PR
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                Продажи
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                Управление персоналом, тренинги
+            </label>
+        </div>
+        <div>
+            <a class="padded-link" href="#">
+                Показать весь список областей
+            </a>
         </div>
     </div>
+</div>
 
-    <div class="form-field">
-        <div class="form-label">
-            Профессиональная область:
-        </div>
-        <div class="form-input">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Все профессиональные области
-                </label>
-            </div>
-            <hr>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Бухгалтерия, управленческий учет, финансы предприятия
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Информационные технологии, интернет, телеком
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Маркетинг, реклама, PR
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Продажи
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Управление персоналом, тренинги
-                </label>
-            </div>
-            <div>
-                <a class="padded-link" href="#">
-                    Показать весь список областей
-                </a>
-            </div>
+<div class="form-field">
+    <div class="form-label">
+        С уровнем заработной платы:
+    </div>
+    <div class="form-input">
+        <div class="form-inline">
+            <label class="sr-only" for="salary-from">С уровнем заработной платы:</label>
+            <span>От</span>
+            {{input value=filter.salary type="text" id="salary-from" class="form-control"}}
+            <select id="currency" name="currency" class="form-control">
+                <option>руб.</option>
+                <option>USD</option>
+                <option>EUR</option>
+            </select>
         </div>
     </div>
+</div>
 
-    <div class="form-field">
-        <div class="form-label">
-            С уровнем заработной платы:
-        </div>
-        <div class="form-input">
-            <div class="form-inline">
-                <label class="sr-only" for="salary-from">С уровнем заработной платы:</label>
-                <span>От</span>
-                <input type="text" id="salary-from" class="form-control" >
-                <select id="currency" name="currency" class="form-control">
-                    <option>руб.</option>
-                    <option>USD</option>
-                    <option>EUR</option>
+<div class="form-field">
+    <div class="form-label">
+        Регион:
+    </div>
+    <div class="form-input">
+        <div class="row">
+            <div class="col-xs-5">
+                <label class="sr-only" for="region">Регион:</label>
+                <select multiple id="region" class="form-control chosen-select" data-placeholder="Введите название региона">
+                    <optgroup label="Россия">
+                        <option>Москва</option>
+                        <option>Пенза</option>
+                        <option>Самара</option>
+                        <option>Нижний Новгород</option>
+                        <option>Санкт-Петербург</option>
+                    </optgroup>
+                    <optgroup label="Украина">
+                        <option>Киев</option>
+                        <option>Одесса</option>
+                        <option>Львов</option>
+                        <option>Харьков</option>
+                        <option>Севастополь</option>
+                    </optgroup>
                 </select>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="form-field">
-        <div class="form-label">
-            Регион:
-        </div>
-        <div class="form-input">
-            <div class="row">
-                <div class="col-xs-5">
-                    <label class="sr-only" for="region">Регион:</label>
-                    <select multiple id="region" class="form-control chosen-select" data-placeholder="Введите название региона">
-                        <optgroup label="Россия">
-                            <option>Москва</option>
-                            <option>Пенза</option>
-                            <option>Самара</option>
-                            <option>Нижний Новгород</option>
-                            <option>Санкт-Петербург</option>
-                        </optgroup>
-                        <optgroup label="Украина">
-                            <option>Киев</option>
-                            <option>Одесса</option>
-                            <option>Львов</option>
-                            <option>Харьков</option>
-                            <option>Севастополь</option>
-                        </optgroup>
-                    </select>
-                </div>
-            </div>
-        </div>
+<div class="form-field">
+    <div class="form-label">
+        Тип занятости:
     </div>
-
-    <div class="form-field">
-        <div class="form-label">
-            Тип занятости:
+    <div class="form-input">
+        {{#each filter.dictionaries.employment}}
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" {{bind-attr value=id}}>
+                {{name}}
+            </label>
         </div>
-        <div class="form-input">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Полная занятость
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Частичная занятость
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Проектная/Временная работа
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Волонтерство
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Стажировка
-                </label>
-            </div>
-        </div>
+        {{/each}}
     </div>
-    <div class="form-field">
-        <div class="form-label">
-            График работы:
-        </div>
-        <div class="form-input">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Полный день
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Сменный график
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Гибкий график
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="">
-                    Удалённая работа
-                </label>
-            </div>
-        </div>
+</div>
+<div class="form-field">
+    <div class="form-label">
+        График работы:
     </div>
-    <div class="form-submit">
-        <p>
-            <button type="submit" class="btn btn-primary btn-lg">Сохранить настройки</button>
-        </p>
+    <div class="form-input">
+        {{#each filter.dictionaries.schedule}}
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" {{bind-attr value=id}}>
+                {{name}}
+            </label>
+        </div>
+        {{/each}}
     </div>
-</form>
+</div>

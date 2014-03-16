@@ -9,6 +9,15 @@
     </ul>
 
     <div class="tab-content">
-        {{outlet}}
+        <form role="form">
+            {{outlet}}
+            <div class="form-submit">
+                <p>
+                    <button type="submit" class="btn btn-primary btn-lg" {{action 'submit'}}>
+                        Сохранить настройки
+                    </button>
+                </p>
+            </div>
+        </form>
     </div>
 </div>
