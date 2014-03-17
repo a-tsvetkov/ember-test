@@ -4,7 +4,7 @@
     </div>
     <div class="form-input">
         {{input type="text" value=filter.text class="form-control" id="form__text" }}
-        <p class="help-block search-help">Например, <a href="#">бухгалтер</a></p>
+        <p class="help-block search-help">Например, <a {{action 'setText' "бухгалтер"}}>бухгалтер</a></p>
     </div>
 </div>
 
@@ -15,44 +15,37 @@
     <div class="form-input">
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="">
+                {{input type="checkbox" name="allSpecializations" checked=filter.allSpecializations}}
                 Все профессиональные области
             </label>
         </div>
         <hr>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                Бухгалтерия, управленческий учет, финансы предприятия
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                Информационные технологии, интернет, телеком
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                Маркетинг, реклама, PR
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                Продажи
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                Управление персоналом, тренинги
-            </label>
-        </div>
+        {{#if specializationsExpanded}}
+            {{#each item in filter.specializations}}
+                <div class="checkbox">
+                    <label>
+                        {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='filter.specialization'}}
+                        {{item.name}}
+                    </label>
+                </div>
+            {{/each}}
+        {{else}}
+            {{#each item in shortSpecializations}}
+                <div class="checkbox">
+                    <label>
+                        {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='filter.specialization'}}
+                        {{item.name}}
+                    </label>
+                </div>
+            {{/each}}
+        {{/if}}
         <div>
-            <a class="padded-link" href="#">
-                Показать весь список областей
+            <a class="padded-link" {{action 'toggleSpecializations'}}>
+                {{#if specializationsExpanded}}
+                    Показать весь список областей
+                {{else}}
+                    Показать краткий список областей
+                {{/if}}
             </a>
         </div>
     </div>
@@ -67,11 +60,20 @@
             <label class="sr-only" for="salary-from">С уровнем заработной платы:</label>
             <span>От</span>
             {{input value=filter.salary type="text" id="salary-from" class="form-control"}}
-            <select id="currency" name="currency" class="form-control">
-                <option>руб.</option>
-                <option>USD</option>
-                <option>EUR</option>
-            </select>
+            {{view Ember.Select
+                   content=filter.dictionaries.currency
+                   optionValuePath="content.code"
+                   optionLabelPath="content.abbr"
+                   selection=filter.currency
+                   class="form-control"
+                   value=filter.currency.code
+                   id="currency"}}
+        </div>
+        <div class="checkbox">
+            <label>
+                {{input type="checkbox" name="onlyWithSalary" checked=filter.onlyWithSalary}}
+                Скрыть вакансии без указания зарплаты
+            </label>
         </div>
     </div>
 </div>
@@ -110,11 +112,11 @@
         Тип занятости:
     </div>
     <div class="form-input">
-        {{#each filter.dictionaries.employment}}
+        {{#each item in filter.dictionaries.employment}}
         <div class="checkbox">
             <label>
-                <input type="checkbox" {{bind-attr value=id}}>
-                {{name}}
+                {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='filter.employment'}}
+                {{item.name}}
             </label>
         </div>
         {{/each}}
@@ -125,11 +127,11 @@
         График работы:
     </div>
     <div class="form-input">
-        {{#each filter.dictionaries.schedule}}
+        {{#each item in filter.dictionaries.schedule}}
         <div class="checkbox">
             <label>
-                <input type="checkbox" {{bind-attr value=id}}>
-                {{name}}
+                {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='filter.schedule'}}
+                {{item.name}}
             </label>
         </div>
         {{/each}}

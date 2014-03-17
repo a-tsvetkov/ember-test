@@ -3,36 +3,14 @@
         Я хочу получать вакансии для позиции:
     </div>
     <div class="form-input">
+        {{#each item in presetSearches}}
         <div class="checkbox">
             <label>
-                <input type="checkbox" value="">
-                Программист
+                {{view VacancySearch.ListItemCheckbox value=item itemsBinding='filter.textArray'}}
+                {{item}}
             </label>
         </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                Менеджер по продажам
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                Бухгалтер
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                Менеджер по персоналу
-            </label>
-        </div>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="">
-                Водитель
-            </label>
-        </div>
+        {{/each}}
         <div>
             {{#link-to 'filter.extended' class="padded-link"}}
                 Выбрать другие
@@ -49,7 +27,7 @@
         <label class="sr-only" for="salary-from">С уровнем заработной платы:</label>
         <span>От</span>
         {{input value=filter.salary type="text" id="salary-from" class="form-control"}}
-        <span>руб.</span>
+        <span>{{filter.currency.abbr}}</span>
     </div>
 </div>
 
