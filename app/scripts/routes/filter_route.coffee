@@ -7,9 +7,11 @@ VacancySearch.FilterRoute = Ember.Route.extend
 
             flattened = []
             for country in data
-                flattened.push {name: country.name, areas: $.map(country.areas, getChildAreas)}
+                for area in $.map(country.areas, getChildAreas)
+                    area.group = country.name
+                    flattened.push area
 
-            return flattened
+            flattened
         )
         specializations: $.getJSON('https://api.hh.ru/specializations').then (data) ->
             data.sort (a, b) -> Number(a.id) - Number(b.id)

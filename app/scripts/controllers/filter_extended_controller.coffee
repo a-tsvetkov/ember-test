@@ -6,9 +6,9 @@ VacancySearch.FilterExtendedController = Ember.Controller.extend
     specializationsExpanded: false
 
     shortSpecializations: (->
-        @get('filter').get('specializations')[0..5]
+        @get('filter.specializations')[0..5]
         ).property('filter.specializations')
 
     actions:
         toggleSpecializations: -> @set 'specializationsExpanded', not @get('specializationsExpanded')
-        setText: (value) -> @get('filter').set('text', value)
+        setText: (value) -> @set('filter.text', value)
