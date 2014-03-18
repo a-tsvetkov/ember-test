@@ -1,3 +1,5 @@
+require 'scripts/config'
+
 VacancySearch = window.VacancySearch = Ember.Application.create()
 
 # Order and include as you please.

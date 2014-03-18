@@ -1,3 +1,41 @@
 <div class="content-wrap">
     <h1>Список вакансий</h1>
+    {{#each vacancy in model}}
+        <div class="row vacancy">
+            <div class="col-xs-6">
+                <div>
+                    <p class="lead vacancy-name">
+                        <a target="_blank" {{bind-attr href="vacancy.alternateUrl"}}>
+                            {{vacancy.name}}
+                        </a>
+                    </p>
+                </div>
+                <div>
+                    <p class="text-muted">
+                        {{vacancy.employer.name}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                {{#if vacancy.salary}}
+                    <p>
+                        <strong>
+                            {{#if vacancy.salary.from}}
+                                от {{vacancy.salary.from}}
+                            {{/if}}
+                            {{#if vacancy.salary.to}}
+                                &nbsp;до {{vacancy.salary.to}}
+                            {{/if}}
+                            {{#if vacancy.salary.currency}}
+                                &nbsp;{{vacancy.salary.currency}}
+                            {{/if}}
+                        </strong>
+                    </p>
+                {{else}}
+                    <p class="text-muted">з/п не указана</p>
+                {{/if}}
+            </div>
+            <div class="col-xs-2"></div>
+        </div>
+    {{/each}}
 </div>
