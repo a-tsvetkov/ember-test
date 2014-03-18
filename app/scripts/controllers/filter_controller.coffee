@@ -1,4 +1,6 @@
 VacancySearch.FilterController = Ember.Controller.extend
+    needs: ['application']
+
     textArray: []
     salary: ''
     onlyWithSalary: false
@@ -24,11 +26,15 @@ VacancySearch.FilterController = Ember.Controller.extend
 
     actions:
         submit: () ->
-            console.log(@get 'text')
-            console.log(@get('salary'))
-            console.log(@get('specialization'))
-            console.log(@get('onlyWithSalary'))
-            console.log(@get('currency'))
-            console.log(@get('text'))
-            console.log(@get('employment'))
-            console.log(@get('schedule'))
+            criteria =
+                text: @get 'text'
+                salary: @get 'salary'
+                only_with_salary: @get 'onlyWithSalary'
+                area: @get 'area'
+                specialization: @get 'specialization'
+                currency: @get 'currency.code'
+                employment: @get 'employment'
+                schedule: @get 'schedule'
+
+            @set('controllers.application.searchCriteria', criteria)
+            @transitionTo('vacancies')

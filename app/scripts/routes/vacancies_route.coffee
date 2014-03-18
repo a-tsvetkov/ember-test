@@ -1,3 +1,7 @@
 VacancySearch.VacanciesRoute = Ember.Route.extend
     model: ->
-        @store.find('vacancy', {text: "python", salary: 120000, schedule: ['fullDay', 'remote']})
+        criteria = @controllerFor('application').get('searchCriteria')
+        if criteria
+            @store.find('vacancy', criteria)
+        else
+            []
