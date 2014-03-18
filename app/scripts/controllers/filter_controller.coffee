@@ -2,7 +2,7 @@ VacancySearch.FilterController = Ember.Controller.extend
     needs: ['application']
 
     textArray: []
-    salary: ''
+    salary: null
     onlyWithSalary: false
     area: []
     specialization: []
@@ -35,6 +35,10 @@ VacancySearch.FilterController = Ember.Controller.extend
                 currency: @get 'currency.code'
                 employment: @get 'employment'
                 schedule: @get 'schedule'
+
+            delete criteria.currency unless criteria.salary
+            for key, value of criteria
+                delete criteria[key] unless value
 
             @set('controllers.application.searchCriteria', criteria)
             @transitionTo('vacancies')
