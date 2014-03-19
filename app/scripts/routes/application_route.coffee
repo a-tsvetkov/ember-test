@@ -8,9 +8,12 @@ VacancySearch.ApplicationRoute = Ember.Route.extend
             )
         dictionaries: $.getJSON('https://api.hh.ru/dictionaries')
 
+    afterModel: (model) ->
+        # Ensure searchCriteria is available in child routes
+        @controllerFor('application').set 'searchCriteria', model.criteria
+
     setupController: (controller, model) ->
         controller.set 'dictionaries', model.dictionaries
-        controller.set 'searchCriteria', model.criteria
 
         defaultCurrency = model.dictionaries.currency.find (val) -> val.default
         controller.set('searchCriteria.currency', defaultCurrency)
