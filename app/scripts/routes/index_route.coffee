@@ -1,2 +1,7 @@
 VacancySearch.IndexRoute = Ember.Route.extend
-    beforeModel: -> @transitionTo('filter')
+    beforeModel: ->
+        criteria = @controllerFor('application').get('searchCriteria')
+        if criteria.hasSearchParams()
+            return @transitionTo('vacancies')
+        else
+            return @transitionTo('filter')

@@ -15,6 +15,10 @@ VacancySearch.FilterRoute = Ember.Route.extend
         specializations: $.getJSON('https://api.hh.ru/specializations').then (data) ->
             data.sort (a, b) -> Number(a.id) - Number(b.id)
 
+    afterModel: (model) ->
+        if @controllerFor('application').get('searchCriteria.extended')
+            @transitionTo('filter.extended')
+
     setupController: (controller, model) ->
         controller.set('areas', model.areas)
         controller.set('specializations', model.specializations)

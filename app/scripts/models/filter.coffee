@@ -8,6 +8,8 @@ VacancySearch.Filter = DS.Model.extend
     employment: DS.attr(null, defaultValue: [])
     schedule: DS.attr(null, defaultValue: [])
 
+    extended: DS.attr('boolean', defaultValue: false)
+
     allSpecializations: ((key,  value)->
         if value? and value is true
             @set 'specialization', []
@@ -35,6 +37,9 @@ VacancySearch.Filter = DS.Model.extend
 
         delete params.currency unless params.salary
         for key, value of params
-            delete params[key] unless value
+            if not value or (value.length? and value.length == 0)
+                delete params[key]
 
         return params
+
+    hasSearchParams: -> not (Object.keys(@searchParams()).length == 0)
