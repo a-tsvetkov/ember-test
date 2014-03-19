@@ -8,7 +8,7 @@ VacancySearch.ApplicationRoute = Ember.Route.extend
             )
 
     setupController: (controller, model) ->
-        controller.set 'searchCriteria', model
+        controller.set 'searchCriteria', model.criteria
         controller.set 'menuItems',  [
             { route: 'filter', name: 'Настройки' }
             { route: 'vacancies', name: 'Вакансии' }
