@@ -3,7 +3,7 @@
         Я хочу получать вакансии для позиции:
     </div>
     <div class="form-input">
-        {{input type="text" value=filter.text class="form-control" id="form__text" }}
+        {{input type="text" value=criteria.text class="form-control" id="form__text" }}
         <p class="help-block search-help">Например, <a {{action 'setText' "бухгалтер"}}>бухгалтер</a></p>
     </div>
 </div>
@@ -15,7 +15,7 @@
     <div class="form-input">
         <div class="checkbox">
             <label>
-                {{input type="checkbox" name="allSpecializations" checked=filter.allSpecializations}}
+                {{input type="checkbox" name="criteria.allSpecializations" checked=criteria.allSpecializations}}
                 Все профессиональные области
             </label>
         </div>
@@ -24,7 +24,7 @@
             {{#each item in filter.specializations}}
                 <div class="checkbox">
                     <label>
-                        {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='filter.specialization'}}
+                        {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='criteria.specialization'}}
                         {{item.name}}
                     </label>
                 </div>
@@ -33,7 +33,7 @@
             {{#each item in shortSpecializations}}
                 <div class="checkbox">
                     <label>
-                        {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='filter.specialization'}}
+                        {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='criteria.specialization'}}
                         {{item.name}}
                     </label>
                 </div>
@@ -59,19 +59,19 @@
         <div class="form-inline">
             <label class="sr-only" for="salary-from">С уровнем заработной платы:</label>
             <span>От</span>
-            {{input value=filter.salary type="text" id="salary-from" class="form-control"}}
+            {{input value=criteria.salary type="text" id="salary-from" class="form-control"}}
             {{view Ember.Select
                    content=filter.dictionaries.currency
                    optionValuePath="content.code"
                    optionLabelPath="content.abbr"
-                   selection=filter.currency
+                   selection=criteria.currency
                    class="form-control"
-                   value=filter.currency.code
+                   value=criteria.currency.code
                    id="currency"}}
         </div>
         <div class="checkbox">
             <label>
-                {{input type="checkbox" name="onlyWithSalary" checked=filter.onlyWithSalary}}
+                {{input type="checkbox" name="onlyWithSalary" checked=criteria.onlyWithSalary}}
                 Скрыть вакансии без указания зарплаты
             </label>
         </div>
@@ -115,7 +115,7 @@
         {{#each item in filter.dictionaries.employment}}
         <div class="checkbox">
             <label>
-                {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='filter.employment'}}
+                {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='criteria.employment'}}
                 {{item.name}}
             </label>
         </div>
@@ -130,7 +130,7 @@
         {{#each item in filter.dictionaries.schedule}}
         <div class="checkbox">
             <label>
-                {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='filter.schedule'}}
+                {{view VacancySearch.ListItemCheckbox value=item.id itemsBinding='criteria.schedule'}}
                 {{item.name}}
             </label>
         </div>

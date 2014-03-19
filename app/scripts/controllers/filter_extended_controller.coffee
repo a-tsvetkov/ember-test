@@ -1,6 +1,7 @@
 VacancySearch.FilterExtendedController = Ember.Controller.extend
     needs: ['filter']
     filter: Ember.computed.alias('controllers.filter')
+    criteria: Ember.computed.alias('controllers.filter.criteria')
 
     specializationLimit: 5
     specializationsExpanded: false
@@ -11,4 +12,4 @@ VacancySearch.FilterExtendedController = Ember.Controller.extend
 
     actions:
         toggleSpecializations: -> @set 'specializationsExpanded', not @get('specializationsExpanded')
-        setText: (value) -> @set('filter.text', value)
+        setText: (value) -> @set('criteria.text', value)

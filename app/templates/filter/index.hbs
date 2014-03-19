@@ -6,7 +6,7 @@
         {{#each item in presetSearches}}
         <div class="checkbox">
             <label>
-                {{view VacancySearch.ListItemCheckbox value=item itemsBinding='filter.textArray'}}
+                {{view VacancySearch.ListItemCheckbox value=item itemsBinding='criteria.textArray'}}
                 {{item}}
             </label>
         </div>
@@ -26,8 +26,8 @@
     <div class="form-input form-inline">
         <label class="sr-only" for="salary-from">С уровнем заработной платы:</label>
         <span>От</span>
-        {{input value=filter.salary type="text" id="salary-from" class="form-control"}}
-        <span>{{filter.currency.abbr}}</span>
+        {{input value=criteria.salary type="text" id="salary-from" class="form-control"}}
+        <span>{{criteria.currency.abbr}}</span>
     </div>
 </div>
 

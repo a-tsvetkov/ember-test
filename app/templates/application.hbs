@@ -5,7 +5,7 @@
         <div id="menu" class="col-sm-2">
             <nav class="nav-sidebar">
                 <ul class="nav" data-bind="foreach: menuItems">
-                    {{#each item in model.menuItems}}
+                    {{#each item in menuItems}}
                     <li>
                         {{#link-to item.route class='inner'}}
                             {{item.name}}

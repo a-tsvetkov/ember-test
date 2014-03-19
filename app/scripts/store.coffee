@@ -26,3 +26,8 @@ VacancySearch.VacancySerializer = VacancySearch.ApplicationSerializer.extend
             delete payload.per_page
 
             store.metaForType(type, meta)
+
+VacancySearch.FilterSerializer = DS.LSSerializer
+
+VacancySearch.FilterAdapter = DS.LSAdapter.extend
+    namespace: 'hh-vacancy'
