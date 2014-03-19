@@ -2,6 +2,6 @@ VacancySearch.VacanciesRoute = Ember.Route.extend
     model: ->
         criteria = @controllerFor('application').get('searchCriteria')
         if criteria.hasSearchParams()
-            @store.find('vacancy', criteria.searchParams())
+            return @store.find('vacancy', criteria.searchParams())
         else
-            []
+            return []
