@@ -27,7 +27,7 @@
         <label class="sr-only" for="salary-from">С уровнем заработной платы:</label>
         <span>От</span>
         {{input value=criteria.salary type="text" id="salary-from" class="form-control"}}
-        <span>{{criteria.currency.abbr}}</span>
+        <span>{{filter.defaultCurrency.abbr}}</span>
     </div>
 </div>
 
@@ -59,4 +59,12 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="form-submit">
+    <p>
+        <button type="submit" class="btn btn-primary btn-lg" {{action 'submit'}}>
+            Сохранить настройки
+        </button>
+    </p>
 </div>

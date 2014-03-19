@@ -13,3 +13,4 @@ VacancySearch.FilterExtendedController = Ember.Controller.extend
     actions:
         toggleSpecializations: -> @set 'specializationsExpanded', not @get('specializationsExpanded')
         setText: (value) -> @set('criteria.text', value)
+        submit: () -> @get('filter').send('submit')

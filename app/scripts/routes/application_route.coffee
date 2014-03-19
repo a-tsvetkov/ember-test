@@ -16,7 +16,8 @@ VacancySearch.ApplicationRoute = Ember.Route.extend
         controller.set 'dictionaries', model.dictionaries
 
         defaultCurrency = model.dictionaries.currency.find (val) -> val.default
-        controller.set('searchCriteria.currency', defaultCurrency)
+        controller.set 'searchCriteria.currency', defaultCurrency
+        controller.set 'defaultCurrency', defaultCurrency
 
         controller.set 'menuItems',  [
             { route: 'filter', name: 'Настройки' }
