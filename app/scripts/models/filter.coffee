@@ -33,8 +33,8 @@ VacancySearch.Filter = DS.Model.extend
             employment: @get 'employment'
             schedule: @get 'schedule'
 
-        delete criteria.currency unless criteria.salary
-        for key, value of criteria
-            delete criteria[key] unless value
+        delete params.currency unless params.salary
+        for key, value of params
+            delete params[key] unless value
 
         return params
