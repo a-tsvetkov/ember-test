@@ -86,22 +86,14 @@
         <div class="row">
             <div class="col-xs-5">
                 <label class="sr-only" for="region">Регион:</label>
-                <select multiple id="region" class="form-control chosen-select" data-placeholder="Введите название региона">
-                    <optgroup label="Россия">
-                        <option>Москва</option>
-                        <option>Пенза</option>
-                        <option>Самара</option>
-                        <option>Нижний Новгород</option>
-                        <option>Санкт-Петербург</option>
-                    </optgroup>
-                    <optgroup label="Украина">
-                        <option>Киев</option>
-                        <option>Одесса</option>
-                        <option>Львов</option>
-                        <option>Харьков</option>
-                        <option>Севастополь</option>
-                    </optgroup>
-                </select>
+                {{multi-select-component
+                promt="Введите название региона..."
+                contentBinding="filter.areas"
+                optionLabelPath="name"
+                optionValuePath="id"
+                optionGroupPath="country"
+                selections=criteria.area
+                classNames="area-select"}}
             </div>
         </div>
     </div>

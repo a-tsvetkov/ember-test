@@ -2,12 +2,12 @@ VacancySearch.FilterRoute = Ember.Route.extend
     model: -> Ember.RSVP.hash
         areas: $.getJSON('https://api.hh.ru/areas').then((data) ->
             getChildAreas = (item) ->
-                if $.isArray(item.areas) and item.areas.length > 0 then $.map(item.areas, getChildAreas) else item
+                if $.isArray(item.areas) and item.areas.length > 0 then [item].concat $.map(item.areas, getChildAreas) else item
 
             flattened = []
             for country in data
                 for area in $.map(country.areas, getChildAreas)
-                    area.group = country.name
+                    area.country = country.name
                     flattened.push area
 
             flattened

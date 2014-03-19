@@ -29,7 +29,7 @@ VacancySearch.Filter = DS.Model.extend
             text: @get 'text'
             salary: @get 'salary'
             only_with_salary: @get 'onlyWithSalary'
-            area: @get 'area'
+            area: (a.id for a in @get 'area')
             specialization: @get 'specialization'
             currency: @get 'currency.code'
             employment: @get 'employment'

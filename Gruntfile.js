@@ -194,9 +194,10 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     src: [
+                        '<%= yeoman.dist %>/bower_components/ember-widgets-shim/{,*/}*.css',
                         '<%= yeoman.dist %>/scripts/{,*/}*.js',
-                        '<%= yeoman.dist %>/styles/{,*/}*.css',
                         '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+                        '<%= yeoman.dist %>/styles/{,*/}*.css',
                         '<%= yeoman.dist %>/styles/fonts/*'
                     ]
                 }
@@ -210,7 +211,10 @@ module.exports = function (grunt) {
         },
         usemin: {
             html: ['<%= yeoman.dist %>/{,*/}*.html'],
-            css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+            css: [
+                '<%= yeoman.dist %>/bower_components/ember-widgets-shim/{,*/}*.css',
+                '<%= yeoman.dist %>/styles/{,*/}*.css'
+            ],
             options: {
                 dirs: ['<%= yeoman.dist %>']
             }
@@ -239,6 +243,7 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     '<%= yeoman.dist %>/styles/main.css': [
+                        '<%= yeoman.app %>/bower_components/ember-widgets-shim/{,*/}*.css',
                         '.tmp/styles/{,*/}*.css',
                         '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]
@@ -271,7 +276,8 @@ module.exports = function (grunt) {
             options: {
               variables: {
                 ember: 'bower_components/ember/ember.js',
-                ember_data: 'bower_components/ember-data/ember-data.js'
+                ember_data: 'bower_components/ember-data/ember-data.js',
+                ember_list_view: 'bower_components/ember-list-view/list-view.js'
               }
             },
             files: [
@@ -282,7 +288,8 @@ module.exports = function (grunt) {
             options: {
               variables: {
                 ember: 'bower_components/ember/ember.prod.js',
-                ember_data: 'bower_components/ember-data/ember-data.prod.js'
+                ember_data: 'bower_components/ember-data/ember-data.prod.js',
+                ember_list_view: 'bower_components/ember-list-view/list-view.prod.js'
               }
             },
             files: [

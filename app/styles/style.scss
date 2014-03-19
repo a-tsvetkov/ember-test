@@ -1,6 +1,5 @@
 $icon-font-path: "../styles/fonts/"; // Change the path to the fonts
 @import "bootstrap-sass/lib/bootstrap";
-@import "chosen/sass/chosen.scss";
 
 
 /* Sticky footer styles
@@ -147,4 +146,16 @@ footer {
 
 .vacancy-name {
     margin-bottom: 5px;
+}
+
+.area-select {
+    width: 100%;
+}
+.area-select .ember-select-choices {
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+.area-select .dropdown-menu {
+    min-width: 300px;
 }
