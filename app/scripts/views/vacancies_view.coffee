@@ -1,9 +1,10 @@
 VacancySearch.VacanciesView = Ember.View.extend
 
     didInsertElement: ->
-        $(window).bind "scroll", () => @didScroll()
+        @scrollCallback = () => @didScroll()
+        $(window).bind "scroll", @scrollCallback
 
-    willDestroyElement: -> $(window).unbind "scroll"
+    willDestroyElement: -> $(window).unbind "scroll", @scrollCallback
 
     isCloseToBottom: ->
         distanceToTop = $(document).height() - $(window).height()
