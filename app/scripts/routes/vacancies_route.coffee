@@ -15,22 +15,13 @@ VacancySearch.VacanciesRoute = Ember.Route.extend
         else
             return []
 
-    afterModel: (vacancies) ->
-        @parseMeta()
-
     setupController: (controller, model) ->
         controller.set 'model', model
-
         controller.set 'sortOptions', @getSortOptions()
 
     getSortOptions: ->
-        sortOptions = []
         availableOptions = @controllerFor('application').get('dictionaries.vacancy_search_order')
-        for option in availableOptions
-            if option.id in @get('allowedSorts')
-                sortOptions.push option
-
-        sortOptions.reverse()
+        _.filter(availableOptions, (option) => option.id in @get('allowedSorts')).reverse()
 
     parseMeta: ->
         meta = @store.metadataFor('vacancy')
@@ -50,8 +41,8 @@ VacancySearch.VacanciesRoute = Ember.Route.extend
                 if item.get 'salary'
                     item.set 'currency', _.find currencies, (c) -> c.code == item.get 'salary.currency'
 
+            @parseMeta()
             return data
-
 
     canLoadMore: ->
         @get('totalPages') > (@get('page') + 1)
@@ -61,9 +52,7 @@ VacancySearch.VacanciesRoute = Ember.Route.extend
             if @canLoadMore()
                 @controller.set 'loading', true
                 @loadPage(@get('page') + 1).then (data) =>
-                    items = @controller.get 'model'
-                    items.pushObjects(data.content)
-                    @parseMeta()
+                    @controller.get('model').pushObjects(data.content)
                     @controller.set 'loading', false
 
         sort: (key) ->

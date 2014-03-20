@@ -162,3 +162,18 @@ footer {
 .area-select .dropdown-menu {
     min-width: 300px;
 }
+
+.sort-links {
+    display: inline-block;
+    margin: 0 5px;
+}
+.sort-links span {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.sort-links span.active {
+   background-color: #ddd;
+   color: #555;
+   border-radius: 4px;
+}

@@ -3,14 +3,12 @@
     <div id="sort">
         <p>
             Сортировка:&nbsp;
-            {{#each option in sortOptions}}
-                <span class="sort-option">
-                    <a {{action 'sort' option.id}}>
-                        {{option.name}}
-                    </a>
-                </span>
-                &nbsp;
-            {{/each}}
+            <span class="sort-links">
+                {{#each option in sortOptions}}
+                    {{action-link key=option.id name=option.name currentActive=sort action='sort'}}
+                    &nbsp;
+                {{/each}}
+            </span>
         </p>
     </div>
     {{#each vacancy in model}}
