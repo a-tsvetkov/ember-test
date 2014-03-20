@@ -19,12 +19,18 @@ VacancySearch.VacanciesRoute = Ember.Route.extend
         @set 'page', meta.page
         @set 'totalPages', meta.pages
 
-
     loadPage: (criteria, page) ->
         params = criteria.searchParams()
         params.page = page
         params.per_page = @get 'perPage'
-        @store.find('vacancy', params)
+        @store.find('vacancy', params).then((data) =>
+            currencies = @controllerFor('application').get('dictionaries.currency')
+            for item in data.content
+                if item.get 'salary'
+                    item.set 'currency', _.find currencies, (c) -> c.code == item.get 'salary.currency'
+
+            return data
+            )
 
     canLoadMore: ->
         @get('totalPages') > (@get('page') + 1)

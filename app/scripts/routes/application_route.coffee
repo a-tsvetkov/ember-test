@@ -23,12 +23,11 @@ VacancySearch.ApplicationRoute = Ember.Route.extend
             data.sort (a, b) -> Number(a.id) - Number(b.id)
 
     afterModel: (model) ->
-        # Ensure searchCriteria is available in child routes
+        # Ensure searchCriteria and dictionaries is available in child routes
         @controllerFor('application').set 'searchCriteria', model.criteria
-
+        @controllerFor('application').set 'dictionaries', model.dictionaries
 
     setupController: (controller, model) ->
-        controller.set 'dictionaries', model.dictionaries
 
         defaultCurrency = model.dictionaries.currency.find (val) -> val.default
         controller.set 'searchCriteria.currency', defaultCurrency
