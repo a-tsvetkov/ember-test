@@ -2,10 +2,10 @@
     <h1>Настройки поиска</h1>
     <ul class="nav nav-tabs nav-justified">
         {{#link-to 'filter.index' tagName='li' href=false}}
-            <a {{bindAttr href="view.href"}}>Простой поиск</a>
+            <a {{bind-attr href="view.href"}}>Простой поиск</a>
         {{/link-to}}
         {{#link-to 'filter.extended' tagName='li' href=false}}
-            <a {{bindAttr href="view.href"}}>Расширенный поиск</a>
+            <a {{bind-attr href="view.href"}}>Расширенный поиск</a>
         {{/link-to}}
     </ul>
 

@@ -1,5 +1,18 @@
 <div class="content-wrap">
     <h1>Список вакансий</h1>
+    <div id="sort">
+        <p>
+            Сортировка:&nbsp;
+            {{#each option in sortOptions}}
+                <span class="sort-option">
+                    <a {{action 'sort' option.id}}>
+                        {{option.name}}
+                    </a>
+                </span>
+                &nbsp;
+            {{/each}}
+        </p>
+    </div>
     {{#each vacancy in model}}
         <div class="row vacancy">
             <div class="col-xs-6">

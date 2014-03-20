@@ -10,7 +10,7 @@ VacancySearch.VacanciesView = Ember.View.extend
         distanceToTop = $(document).height() - $(window).height()
         top = $(document).scrollTop()
 
-        top == distanceToTop
+        top >= (distanceToTop - 200)
 
     didScroll: ->
         if @isCloseToBottom()
