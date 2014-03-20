@@ -15,7 +15,7 @@ VacancySearch.FilterIndexController = Ember.Controller.extend
         submit: () ->
             @set 'criteria.textArray', (item for item in @get('criteria.textArray') when item in @presetSearches)
             @set 'criteria.onlyWithSalary', false
-            @set 'criteria.currency', @get('filter.defaultCurrency')
+            @set 'criteria.currency', @get('filter.defaultCurrency.code')
             @set 'criteria.specialization', []
             @set 'criteria.employment', []
             @set 'criteria.schedule', []

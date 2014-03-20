@@ -4,7 +4,7 @@ VacancySearch.Filter = DS.Model.extend
     onlyWithSalary: DS.attr('boolean', defaultValue: false)
     area: DS.attr(null, defaultValue: [])
     specialization: DS.attr(null, defaultValue: [])
-    currency: DS.attr()
+    currency: DS.attr("string")
     employment: DS.attr(null, defaultValue: [])
     schedule: DS.attr(null, defaultValue: [])
 
@@ -31,7 +31,7 @@ VacancySearch.Filter = DS.Model.extend
             only_with_salary: @get 'onlyWithSalary'
             area: (a.id for a in @get 'area')
             specialization: @get 'specialization'
-            currency: @get 'currency.code'
+            currency: @get 'currency'
             employment: @get 'employment'
             schedule: @get 'schedule'
 

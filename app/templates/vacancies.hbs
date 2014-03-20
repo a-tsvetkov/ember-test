@@ -1,5 +1,6 @@
 <div class="content-wrap">
     <h1>Список вакансий</h1>
+    {{#if model}}
     <div id="sort">
         <p>
             Сортировка:&nbsp;
@@ -11,6 +12,7 @@
             </span>
         </p>
     </div>
+    {{/if}}
     {{#each vacancy in model}}
         <div class="row vacancy">
             <div class="col-xs-6">
