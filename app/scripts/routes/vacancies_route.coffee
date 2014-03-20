@@ -33,7 +33,9 @@ VacancySearch.VacanciesRoute = Ember.Route.extend
         loadNextPage: ->
             if @canLoadMore()
                 criteria = @controllerFor('application').get('searchCriteria')
+                @controller.set 'loading', true
                 @loadPage(criteria, @get('page') + 1).then (data) =>
                     items = @modelFor 'vacancies'
                     items.pushObjects(data.content)
                     @parseMeta()
+                    @controller.set 'loading', false

@@ -9,7 +9,8 @@
     "ember-localstorage-adapter": "~0.2.0",
     "ember-widgets-shim": "~0.0.1",
     "ember-list-view": "~0.0.3",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "font-awesome": "~4.0.3"
   },
   "devDependencies": {
     "ember-mocha-adapter": "0.1.2"
