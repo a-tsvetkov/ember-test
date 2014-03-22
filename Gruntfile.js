@@ -3,9 +3,14 @@
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
+    connect.static.mime.define({
+        'application/font-woff': ['woff']
+    });
+
     return connect.static(require('path').resolve(dir));
 };
 var modRewrite = require('connect-modrewrite');
+var header = require('connect-header');
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -71,6 +76,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]']),
+                            header({'Access-Control-Allow-Origin': '*'}),
                             lrSnippet,
                             mountFolder(connect, '.tmp'),
                             mountFolder(connect, yeomanConfig.app)
@@ -83,6 +89,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]']),
+                            header({'Access-Control-Allow-Origin': '*'}),
                             mountFolder(connect, 'test'),
                             mountFolder(connect, '.tmp')
                         ];
@@ -94,6 +101,7 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
                             modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]']),
+                            header({'Access-Control-Allow-Origin': '*'}),
                             mountFolder(connect, yeomanConfig.dist)
                         ];
                     }
