@@ -28,6 +28,9 @@ VacancySearch.VacancySerializer = VacancySearch.ApplicationSerializer.extend
             store.metaForType(type, meta)
 
 VacancySearch.FilterSerializer = DS.LSSerializer
-
 VacancySearch.FilterAdapter = DS.LSAdapter.extend
+    namespace: 'hh-vacancy'
+
+VacancySearch.FavouriteVacancySerializer = DS.LSSerializer
+VacancySearch.FavouriteVacancyAdapter = DS.LSAdapter
     namespace: 'hh-vacancy'

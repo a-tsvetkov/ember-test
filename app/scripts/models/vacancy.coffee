@@ -12,3 +12,9 @@ VacancySearch.Vacancy = DS.Model.extend
     type: DS.attr()
     url: DS.attr('string')
     responseLetterRequired: DS.attr('boolean')
+
+    isFavourite: DS.attr('boolean', defaultValue: false)
+
+# Ensure FavuredVacancy loaded after Vacany
+VacancySearch.FavouriteVacancy = VacancySearch.Vacancy.extend
+    isFavourite: DS.attr('boolean', defaultValue: true)
