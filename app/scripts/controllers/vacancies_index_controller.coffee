@@ -1,4 +1,4 @@
-VacancySearch.VacanciesController = Ember.Controller.extend
+VacancySearch.VacanciesIndexController = Ember.Controller.extend
     needs: ['application']
 
     dictionaries: Ember.computed.alias('controllers.application.dictionaries')

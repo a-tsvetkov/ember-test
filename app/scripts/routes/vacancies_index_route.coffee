@@ -1,4 +1,4 @@
-VacancySearch.VacanciesRoute = Ember.Route.extend
+VacancySearch.VacanciesIndexRoute = Ember.Route.extend
     page: 0
     totalPages: null
     perPage: 20

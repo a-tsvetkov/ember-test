@@ -1,4 +1,4 @@
-VacancySearch.VacanciesView = Ember.View.extend
+VacancySearch.VacanciesIndexView = Ember.View.extend
 
     didInsertElement: ->
         @scrollCallback = () => @didScroll()

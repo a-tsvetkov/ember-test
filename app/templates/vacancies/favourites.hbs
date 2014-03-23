@@ -1,0 +1,12 @@
+{{#each item in model}}
+    {{vacancy-item
+    vacancy=item
+    currencies=dictionaries.currency
+    removeAction='removeFavourite'}}
+{{else}}
+    <div>
+        <p>
+            Список избранных вакансий пока пуст.
+        </p>
+    </div>
+{{/each}}
