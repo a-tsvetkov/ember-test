@@ -176,3 +176,9 @@ footer {
    color: #555;
    border-radius: 4px;
 }
+
+@media (max-width: 768px) {
+    .affix {
+        position: static;
+    }
+}
