@@ -25,7 +25,6 @@ VacancySearch.VacanciesIndexController = Ember.Controller.extend
         addFavourite: (vacancy) ->
             favourite = @store.createRecord 'favourite_vacancy', vacancy.toJSON(includeId: true)
             favourite.save()
-            @get('favouriteVacancies').pushObject(favourite)
 
         removeFavourite: (vacancy) ->
             favourite = @get('favouriteVacancies').find((v) -> v.get('id') == vacancy.get('id'))
