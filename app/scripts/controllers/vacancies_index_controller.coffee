@@ -1,7 +1,8 @@
 VacancySearch.VacanciesIndexController = Ember.Controller.extend
-    needs: ['application']
+    needs: ['application', 'vacancies']
 
     dictionaries: Ember.computed.alias('controllers.application.dictionaries')
+    favouriteVacancies: Ember.computed.alias('controllers.vacancies.favouriteVacancies')
 
     sort: 'relevance'
     loading: false

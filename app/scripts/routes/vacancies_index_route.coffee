@@ -11,15 +11,12 @@ VacancySearch.VacanciesIndexRoute = Ember.Route.extend
         criteria = @controllerFor('application').get('searchCriteria')
         if criteria.hasSearchParams()
             @set 'searchParams', criteria.searchParams()
-            return Ember.RSVP.hash
-                vacancies: @loadPage(@get 'page')
-                favouriteVacancies: @store.find('favourite_vacancy')
+            return @loadPage(@get 'page')
         else
             return []
 
     setupController: (controller, model) ->
-        controller.set 'model', model.vacancies
-        controller.set 'favouriteVacancies', model.favouriteVacancies
+        controller.set 'model', model
         controller.set 'sortOptions', @getSortOptions()
 
     getSortOptions: ->

@@ -2,10 +2,10 @@
     <h1>Список вакансий</h1>
     <ul class="nav nav-tabs nav-justified">
         {{#link-to 'vacancies.index' tagName='li' href=false}}
-            <a {{bind-attr href="view.href"}}>Свежие</a>
+            <a {{bind-attr href="view.href"}}>Свежие <sup>{{totalVacancies}}</sup></a>
         {{/link-to}}
         {{#link-to 'vacancies.favourites' tagName='li' href=false}}
-            <a {{bind-attr href="view.href"}}>Избранные</a>
+            <a {{bind-attr href="view.href"}}>Избранные <sup>{{totalFavourites}}</sup></a>
         {{/link-to}}
     </ul>
     <div class="tab-content">
