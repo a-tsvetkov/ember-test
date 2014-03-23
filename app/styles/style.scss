@@ -93,6 +93,36 @@ footer {
     border-radius: 0 4px 4px 0;
 }
 
+@media (max-width: $screen-sm-max) {
+    .affix {
+        position: static;
+    }
+
+   .nav-sidebar a {
+       color: #333;
+       -webkit-transition: all 0.08s linear;
+       -moz-transition: all 0.08s linear;
+       -o-transition: all 0.08s linear;
+       transition: all 0.08s linear;
+       -webkit-border-radius: 4px 0 0 4px;
+       -moz-border-radius: 4px 0 0 4px;
+       border-radius: 4px 4px 4px 4px;
+   }
+
+   .nav-sidebar {
+       width: 100%;
+       padding: 8px 0;
+       border-right: none;
+   }
+
+   #salary {
+       input, select, .form-group {
+          display: inline-block;
+       }
+   }
+}
+
+
 .form-input select#region {
     max-width: 350px;
 }
@@ -175,10 +205,4 @@ footer {
    background-color: #ddd;
    color: #555;
    border-radius: 4px;
-}
-
-@media (max-width: 768px) {
-    .affix {
-        position: static;
-    }
 }

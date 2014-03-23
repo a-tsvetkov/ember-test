@@ -51,28 +51,36 @@
     </div>
 </div>
 
-<div class="form-field">
+<div id="salary" class="form-field">
     <div class="form-label">
         С уровнем заработной платы:
     </div>
     <div class="form-input">
-        <div class="form-inline">
-            <label class="sr-only" for="salary-from">С уровнем заработной платы:</label>
-            <span>От</span>
-            {{input value=criteria.salary type="text" id="salary-from" class="form-control"}}
-            {{view Ember.Select
-                   content=filter.dictionaries.currency
-                   optionValuePath="content.code"
-                   optionLabelPath="content.abbr"
-                   value=criteria.currency
-                   class="form-control"
-                   id="currency"}}
-        </div>
-        <div class="checkbox">
-            <label>
-                {{input type="checkbox" name="onlyWithSalary" checked=criteria.onlyWithSalary}}
-                Скрыть вакансии без указания зарплаты
-            </label>
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-5">
+                <div class="form-inline">
+                    <label class="sr-only" for="salary-from">С уровнем заработной платы:</label>
+                    <span>От</span>
+                    <div class="form-group">
+                        {{input value=criteria.salary type="text" id="salary-from" class="form-control"}}
+                    </div>
+                    <div class="form-group">
+                        {{view Ember.Select
+                        content=filter.dictionaries.currency
+                        optionValuePath="content.code"
+                        optionLabelPath="content.abbr"
+                        value=criteria.currency
+                        class="form-control form-inline"
+                        id="currency"}}
+                    </div>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        {{input type="checkbox" name="onlyWithSalary" checked=criteria.onlyWithSalary}}
+                        Скрыть вакансии без указания зарплаты
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -83,7 +91,7 @@
     </div>
     <div class="form-input">
         <div class="row">
-            <div class="col-xs-5">
+            <div class="col-xs-12 col-sm-6 col-md-5">
                 <label class="sr-only" for="region">Регион:</label>
                 {{multi-select-component
                 promt="Введите название региона..."
