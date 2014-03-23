@@ -11,12 +11,15 @@ VacancySearch.VacanciesRoute = Ember.Route.extend
         criteria = @controllerFor('application').get('searchCriteria')
         if criteria.hasSearchParams()
             @set 'searchParams', criteria.searchParams()
-            return @loadPage(@get 'page')
+            return Ember.RSVP.hash
+                vacancies: @loadPage(@get 'page')
+                favouriteVacancies: @store.find('favourite_vacancy')
         else
             return []
 
     setupController: (controller, model) ->
-        controller.set 'model', model
+        controller.set 'model', model.vacancies
+        controller.set 'favouriteVacancies', model.favouriteVacancies
         controller.set 'sortOptions', @getSortOptions()
 
     getSortOptions: ->
@@ -36,11 +39,6 @@ VacancySearch.VacanciesRoute = Ember.Route.extend
             params.order_by = @controller.get 'sort'
 
         @store.find('vacancy', params).then (data) =>
-            currencies = @controllerFor('application').get('dictionaries.currency')
-            for item in data.content
-                if item.get 'salary'
-                    item.set 'currency', _.find currencies, (c) -> c.code == item.get 'salary.currency'
-
             @parseMeta()
             return data
 

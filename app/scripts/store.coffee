@@ -32,5 +32,5 @@ VacancySearch.FilterAdapter = DS.LSAdapter.extend
     namespace: 'hh-vacancy'
 
 VacancySearch.FavouriteVacancySerializer = DS.LSSerializer
-VacancySearch.FavouriteVacancyAdapter = DS.LSAdapter
+VacancySearch.FavouriteVacancyAdapter = DS.LSAdapter.extend
     namespace: 'hh-vacancy'

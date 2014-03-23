@@ -1,0 +1,42 @@
+<div class="col-xs-6">
+    <div>
+        <p class="lead vacancy-name">
+            <a target="_blank" {{bind-attr href="vacancy.alternateUrl"}}>
+                {{vacancy.name}}
+            </a>
+        </p>
+    </div>
+    <div>
+        <p class="text-muted">
+            {{vacancy.employer.name}}
+        </p>
+    </div>
+</div>
+
+<div class="col-xs-4">
+    {{#if vacancy.salary}}
+        <p>
+            <strong>
+                {{#if vacancy.salary.from}}
+                    от {{vacancy.salary.from}}
+                {{/if}}
+                {{#if vacancy.salary.to}}
+                    до {{vacancy.salary.to}}
+                {{/if}}
+                {{#if currency}}
+                    {{currency.abbr}}
+                {{/if}}
+            </strong>
+        </p>
+    {{else}}
+        <p class="text-muted">з/п не указана</p>
+    {{/if}}
+</div>
+
+<div class="col-xs-2">
+    <p>
+        <a {{action 'toggleFavourite'}} class="favourite-button">
+            <i {{bind-attr class=":fa :fa-2x isFavourite:fa-minus:fa-plus"}}></i>
+        </a>
+    </p>
+</div>

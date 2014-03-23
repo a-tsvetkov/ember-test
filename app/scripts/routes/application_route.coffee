@@ -25,9 +25,9 @@ VacancySearch.ApplicationRoute = Ember.Route.extend
     afterModel: (model) ->
         # Ensure searchCriteria and dictionaries is available in child routes
         @controllerFor('application').set 'searchCriteria', model.criteria
-        @controllerFor('application').set 'dictionaries', model.dictionaries
 
     setupController: (controller, model) ->
+        controller.set 'dictionaries', model.dictionaries
 
         defaultCurrency = _.find(model.dictionaries.currency, (val) -> val.default)
         if not controller.get('searchCriteria.currency')?

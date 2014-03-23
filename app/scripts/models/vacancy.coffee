@@ -3,7 +3,6 @@ VacancySearch.Vacancy = DS.Model.extend
     premium: DS.attr('boolean')
     address: DS.attr()
     salary: DS.attr()
-    currency: DS.attr('string', defaultValue: '')
     url: DS.attr('string')
     createdAt: DS.attr('date')
     publishedAt: DS.attr('date')
@@ -12,8 +11,6 @@ VacancySearch.Vacancy = DS.Model.extend
     type: DS.attr()
     url: DS.attr('string')
     responseLetterRequired: DS.attr('boolean')
-
-    isFavourite: DS.attr('boolean', defaultValue: false)
 
 # Ensure FavuredVacancy loaded after Vacany
 VacancySearch.FavouriteVacancy = VacancySearch.Vacancy.extend
