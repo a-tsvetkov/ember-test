@@ -4,5 +4,9 @@ VacancySearch.VacanciesRoute = Ember.Route.extend
         @store.find('favourite_vacancy')
 
     setupController: (controller, model) ->
-        controller.set 'totalVacancies', @store.metadataFor('vacancy').found
+        totalVacancies = @store.metadataFor('vacancy').found
+        if totalVacancies
+            controller.set 'totalVacancies', totalVacancies
+        else
+            controller.set 'totalVacancies', 0
         controller.set 'favouriteVacancies', model
