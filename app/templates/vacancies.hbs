@@ -1,6 +1,6 @@
 <div class="content-wrap">
     <h1>Список вакансий</h1>
-    <ul class="nav nav-tabs nav-justified">
+    <ul class="nav nav-pills">
         {{#link-to 'vacancies.index' tagName='li' href=false}}
             <a {{bind-attr href="view.href"}}>Свежие <sup>{{totalVacancies}}</sup></a>
         {{/link-to}}
