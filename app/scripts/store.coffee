@@ -5,12 +5,13 @@ VacancySearch.ApplicationSerializer = DS.RESTSerializer.extend
     keyForAttribute: (attr) ->
         Ember.String.underscore attr
 
-VacancySearch.VacancySerializer = VacancySearch.ApplicationSerializer.extend
     extractArray: (store, type, payload, requestType) ->
-        payload.vacancy = payload.items
-        delete payload.items
+        cleaned_payload = {}
+        cleaned_payload[type.typeKey] = payload.items
 
-        @_super(store, type, payload, requestType)
+        @_super(store, type, cleaned_payload, requestType)
+
+VacancySearch.VacancySerializer = VacancySearch.ApplicationSerializer.extend
 
     extractMeta: (store, type, payload) ->
         if payload?
